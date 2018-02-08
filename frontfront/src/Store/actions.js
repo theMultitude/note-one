@@ -1,5 +1,3 @@
-//Build action functionality here
-// Add a note, Delete a note, 
 import axios from 'axios'
 
 
@@ -12,6 +10,19 @@ export const PULLING_NOTES = "PULLING_NOTES";
 export const NOTES_RECEIVED = "NOTES_RECEIVED";
 
 export const pullnotes = () => {
+    return dispatch => {
+        dispatch ({type: PULLING_NOTES})
+        axios.get("http:localhost:8080/notes")
+        .then(({data}) => {
+            dispatch ({NOTES_RECEIVED, payload: data})
+        })
+        .catch((error) => {
+            dispatch ({type: ERROR, payload: error})
+        })
+    }
+}
+
+export const search = () => {
     return dispatch => {
         dispatch ({type: PULLING_NOTES})
         axios.get("http:localhost:8080/notes")

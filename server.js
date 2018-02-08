@@ -6,8 +6,8 @@ const cors = require("cors");
 const app = express();
 const port = 8080;
 let notes = [
-    { title: "hello, troy", text: "hi", id: 0 },
-    { title: "hello, calculator", text: "bawk, bawk", id: 1 }
+    { title: "Dontcha wanna Fanta?", body: "Nein", id: 0 },
+    { title: "Beep, Bop, Boip", body: "bawk, bawk", id: 1 }
 ];
 let id = 2;
 

@@ -10,10 +10,12 @@ import './index.css';
 import App from './App';
 import reducer from './Store/reducer'
 
+
 const store = createStore(
     reducer,
     applyMiddleware(thunk, logger)
 );
+
 
 const app = (
     <Provider store={store}>
