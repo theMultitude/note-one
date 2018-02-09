@@ -14,9 +14,14 @@ class NoteHolder extends Component {
         this.props.removenote(id);
     }
 
-    editHandler = (id) => {
-        this.props.editnote(id);
+    toggle = () => {
+        
     }
+
+    // editHandler = (event) => {
+    //     event.preventDefault();
+    //     this.props.editnote();
+    // }
 
     render () {
         return (
