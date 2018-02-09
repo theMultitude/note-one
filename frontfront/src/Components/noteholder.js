@@ -7,6 +7,11 @@ class NoteHolder extends Component {
 
     componentDidMount() {
         this.props.pullnotes();
+        console.log('notes', this.props.notes)
+    }
+    
+    removeHandler = (event) => {
+        
     }
 
     render () {
@@ -17,9 +22,9 @@ class NoteHolder extends Component {
                         <div>
                             {this.props.notes.map((note, id) => {
                                 return (
-                                    <form key={id}>
-                                        <h2>{this.props.title}</h2>
-                                        <div>{this.props.body}</div>
+                                    <form key={id} className='noteI'>
+                                        <h2>{note.title}</h2>
+                                        <div>{note.body}</div>
                                         {/* <button onSubmit={}>Exorcise</button>  */}
                                     </form>
                                 )

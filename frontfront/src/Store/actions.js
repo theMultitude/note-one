@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 
-export const ADD_NOTE = 'ADD_NOTE';
+export const ADDING_NOTE = 'ADDING_NOTE'
 export const NOTE_ADDED = 'NOTE_ADDED';
-export const REMOVE_NOTE = 'REMOVE_NOTE';
+export const REMOVING_NOTE = 'REMOVING_NOTE'
+export const NOTE_REMOVED = 'NOTE_REMOVED';
 export const EDIT_NOTE = 'EDIT_NOTE';
 export const ERROR = 'ERROR';
 export const PULLING_NOTES = "PULLING_NOTES";
@@ -24,7 +25,20 @@ export const pullnotes = () => {
     }
 }
 
-export const edit = () => {
+export const addnote = (note) => {
+    return dispatch => {
+        dispatch ({type: ADDING_NOTE})
+        axios.post("http://localhost:8080/notes", note)
+        .then(({data}) => {
+            dispatch ({type:NOTE_ADDED, payload: data})
+        })
+        .catch((error) => {
+            dispatch ({type: ERROR, payload: error})
+        })
+    }
+}
+
+export const edit = (note) => {
     return dispatch => {
         dispatch ({type: EDIT_NOTE})
         axios.get("http://localhost:8080/notes")
@@ -37,28 +51,17 @@ export const edit = () => {
     }
 }
 
-export const addnote = (note) => {
+
+
+export const removenote = (note) => {
     return dispatch => {
-        dispatch ({type: ADD_NOTE})
-        axios.post("http://localhost:8080/notes", note)
+        dispatch ({type: REMOVING_NOTE})
+        axios.delete("http:localhost:8080/notes", note)
         .then(({data}) => {
-            dispatch ({type:NOTE_ADDED, payload: data})
+            dispatch ({type:NOTE_REMOVED, payload: data})
         })
         .catch((error) => {
             dispatch ({type: ERROR, payload: error})
         })
     }
 }
-
-// export const removenote = (note) => {
-//     return dispatch => {
-//         dispatch ({type: REMOVE_NOTE})
-//         axios.delete("http:localhost:8080/notes", note)
-//         .then(({data}) => {
-//             dispatch ({type:NOTE_REMOVED, payload: data})
-//         })
-//         .catch((error) => {
-//             dispatch ({type: ERROR, payload: error})
-//         })
-//     }
-// }

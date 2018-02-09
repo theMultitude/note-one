@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addnote } from '../Store/actions'
 
 class NewNote extends Component {
     state = {
@@ -7,7 +10,7 @@ class NewNote extends Component {
     }
     inputChangeHandler = ({target}) => {
         this.setState({
-            [target.title]: target.value // figure out what to set this to
+            [target.name]: target.value
         })
     }
     submitHandler = (event) => {
@@ -21,12 +24,15 @@ class NewNote extends Component {
     render () {
     return (
         <div className='newNote'>
-            <h4>
-                <input value={this.state.title} name='title' placeholder='Title' onChange={this.inputChangeHandler}></input>
-            </h4>
-                <div>
-                <input value={this.state.body} name='body' placeholder='Body' onChange={this.inputChangeHandler}></input>
-                </div>
+            <form onSubmit={this.submitHandler}>
+                <h4>
+                    <input value={this.state.title} name='title' placeholder='Title' onChange={this.inputChangeHandler}></input>
+                </h4>
+                    <div className='newNote_bodyInput'>
+                        <input value={this.state.body} name='body' placeholder='Body' onChange={this.inputChangeHandler}></input>
+                    </div>
+                <button>Add it!</button>
+            </form>
         </div>
         )
     }
@@ -34,8 +40,8 @@ class NewNote extends Component {
 
 const mapStateToProps = state => {
     return{
-        notes: state.notes,
+        notes: state,
     }
 }
 
-export default NewNote;
+export default connect(mapStateToProps, {addnote}) (NewNote);

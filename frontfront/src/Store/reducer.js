@@ -23,12 +23,19 @@ const reducer = (state = initialState, action) => {
                 notes: action.payload,
                 pullingNotes: false
             }
-        case actionTypes.ADD_NOTE:
+        case actionTypes.ADDING_NOTE:
             return {
                 ...state,
                 notes: action.payload,
+                addingNote: true,
             }
-        case actionTypes.REMOVE_NOTE:
+        case actionTypes.NOTE_ADDED:
+            return {
+                ...state,
+                notes: action.payload,
+                addingNote: false,
+            }
+        case actionTypes.REMOVING_NOTE:
             return {
                 ...state,
                 //remove note from state
