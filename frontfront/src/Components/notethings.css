@@ -1,0 +1,25 @@
+.notesList {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+}
+
+.newNote {
+    border: 2px solid black;
+}
+
+.intro {
+    display: flex;
+    align-content: center;
+    font-size: 18px;
+    border: 
+}
+
+.deleteButton {
+    display: flex;
+    align-items: flex-end;
+}
+
+.noteI {
+
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { pullnotes } from '../Store/actions';
+import { pullnotes, removenote } from '../Store/actions';
 
 class NoteHolder extends Component {
 
@@ -10,23 +10,28 @@ class NoteHolder extends Component {
         console.log('notes', this.props.notes)
     }
     
-    removeHandler = (event) => {
-        
+    removeHandler = (id) => {
+        this.props.removenote(id);
+    }
+
+    editHandler = (id) => {
+        this.props.editnote(id);
     }
 
     render () {
         return (
             <div>
-                <h3>Here are some notes...</h3>
+                <div className='intro'>Here are some notes...</div>
                     <div className="notesList">
                         <div>
                             {this.props.notes.map((note, id) => {
                                 return (
-                                    <form key={id} className='noteI'>
+                                    <div key={id} className='noteI'>
                                         <h2>{note.title}</h2>
                                         <div>{note.body}</div>
-                                        {/* <button onSubmit={}>Exorcise</button>  */}
-                                    </form>
+                                        <button className='deleteButton' onClick={() => this.removeHandler(note.id)}>Exorcise</button>
+                                        <button className='editButton' onClick={() => this.editHandler(note.id)}>Edit</button>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -43,4 +48,4 @@ class NoteHolder extends Component {
     }
 
 
-export default connect(mapStateToProps, { pullnotes })(NoteHolder);
+export default connect(mapStateToProps, { pullnotes, removenote })(NoteHolder);

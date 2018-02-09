@@ -14,8 +14,8 @@ class NewNote extends Component {
         })
     }
     submitHandler = (event) => {
-        event.preventDefault()
-        this.props.addnote(this.state)
+        event.preventDefault();
+        this.props.addnote(this.state);
         this.setState({
             title: '',
             body: '',
@@ -40,7 +40,7 @@ class NewNote extends Component {
 
 const mapStateToProps = state => {
     return{
-        notes: state,
+        notes: state.notes,
     }
 }
 

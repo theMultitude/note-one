@@ -27,6 +27,7 @@ app.get("/note/:id", (req, res) => {
 app.post("/notes", (req, res) => {
     const newNote = req.body;
     notes.push({ ...newNote, id: id });
+    console.log(notes);
     id++;
     res.send(notes);
 });
