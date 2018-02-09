@@ -13,13 +13,14 @@ class NoteHolder extends Component {
         return (
             <div>
                 <h3>Here are some notes...</h3>
-                    <div className="NotesList">
+                    <div className="notesList">
                         <div>
                             {this.props.notes.map((note, id) => {
                                 return (
                                     <form key={id}>
-                                        <h2>{this.notes.title}</h2>
-                                        <div>{this.notes.body}</div>
+                                        <h2>{this.props.title}</h2>
+                                        <div>{this.props.body}</div>
+                                        {/* <button onSubmit={}>Exorcise</button>  */}
                                     </form>
                                 )
                             })}

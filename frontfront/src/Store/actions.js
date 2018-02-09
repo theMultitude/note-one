@@ -9,12 +9,14 @@ export const ERROR = 'ERROR';
 export const PULLING_NOTES = "PULLING_NOTES";
 export const NOTES_RECEIVED = "NOTES_RECEIVED";
 
+
+
 export const pullnotes = () => {
     return dispatch => {
         dispatch ({type: PULLING_NOTES})
-        axios.get("http:localhost:8080/notes")
+        axios.get("http://localhost:8080/notes")
         .then(({data}) => {
-            dispatch ({NOTES_RECEIVED, payload: data})
+            dispatch ({type: NOTES_RECEIVED, payload: data})
         })
         .catch((error) => {
             dispatch ({type: ERROR, payload: error})
@@ -22,12 +24,12 @@ export const pullnotes = () => {
     }
 }
 
-export const search = () => {
+export const edit = () => {
     return dispatch => {
-        dispatch ({type: PULLING_NOTES})
-        axios.get("http:localhost:8080/notes")
+        dispatch ({type: EDIT_NOTE})
+        axios.get("http://localhost:8080/notes")
         .then(({data}) => {
-            dispatch ({NOTES_RECEIVED, payload: data})
+            dispatch ({type: NOTES_RECEIVED, payload: data})
         })
         .catch((error) => {
             dispatch ({type: ERROR, payload: error})
@@ -38,7 +40,7 @@ export const search = () => {
 export const addnote = (note) => {
     return dispatch => {
         dispatch ({type: ADD_NOTE})
-        axios.post("http:localhost:8080/notes", note)
+        axios.post("http://localhost:8080/notes", note)
         .then(({data}) => {
             dispatch ({type:NOTE_ADDED, payload: data})
         })
@@ -48,3 +50,15 @@ export const addnote = (note) => {
     }
 }
 
+// export const removenote = (note) => {
+//     return dispatch => {
+//         dispatch ({type: REMOVE_NOTE})
+//         axios.delete("http:localhost:8080/notes", note)
+//         .then(({data}) => {
+//             dispatch ({type:NOTE_REMOVED, payload: data})
+//         })
+//         .catch((error) => {
+//             dispatch ({type: ERROR, payload: error})
+//         })
+//     }
+// }

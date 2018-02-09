@@ -20,7 +20,7 @@ class NewNote extends Component {
     }
     render () {
     return (
-        <div>
+        <div className='newNote'>
             <h4>
                 <input value={this.state.title} name='title' placeholder='Title' onChange={this.inputChangeHandler}></input>
             </h4>

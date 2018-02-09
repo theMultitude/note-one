@@ -16,12 +16,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 pullingNotes: true
-            } 
-        case actionTypes.ADD_NOTE:
+            }
+        case actionTypes.NOTES_RECEIVED:
             return {
                 ...state,
                 notes: action.payload,
                 pullingNotes: false
+            }
+        case actionTypes.ADD_NOTE:
+            return {
+                ...state,
+                notes: action.payload,
             }
         case actionTypes.REMOVE_NOTE:
             return {
