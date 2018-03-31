@@ -29,7 +29,7 @@ class NewNote extends Component {
                     <input value={this.state.title} name='title' placeholder='Title' onChange={this.inputChangeHandler}></input>
                 </h4>
                     <div className='newNote_bodyInput'>
-                        <input value={this.state.body} name='body' placeholder='Body' onChange={this.inputChangeHandler}></input>
+                        <input value={this.state.body} name='body'  placeholder='Body' onChange={this.inputChangeHandler}></input>
                     </div>
                 <button>Add it!</button>
             </form>
