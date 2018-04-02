@@ -28,7 +28,7 @@ export const pullnotes = () => {
 export const addnote = (note) => {
     return dispatch => {
         dispatch ({type: ADDING_NOTE})
-        axios.post("http://localhost:8080/notes", note) 
+        axios.post("http://localhost:8080/notes", note)
         .then(({data}) => {
             dispatch ({type:NOTE_ADDED, payload: data})
         })
@@ -41,7 +41,7 @@ export const addnote = (note) => {
 export const removenote = (id) => {
     return dispatch => {
         dispatch ({type: REMOVING_NOTE})
-        axios.delete("http://localhost:8080/notes", { data: {id:id}})
+        axios.delete(`http://localhost:8080/notes/${id}`)
         .then(({data}) => {
             dispatch ({type:NOTE_REMOVED, payload: data})
         })
@@ -51,10 +51,10 @@ export const removenote = (id) => {
     }
 }
 
-export const edit = (note) => {
+export const edit = (id) => {
     return dispatch => {
         dispatch ({type: EDIT_NOTE})
-        axios.put("http://localhost:8080/notes", note)
+        axios.put(`http://localhost:8080/notes/${id}`, note)
         .then(({data}) => {
             dispatch ({type: NOTES_RECEIVED, payload: data})
         })
@@ -63,7 +63,3 @@ export const edit = (note) => {
         })
     }
 }
-
-
-
-
